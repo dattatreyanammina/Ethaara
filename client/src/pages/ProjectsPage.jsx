@@ -257,7 +257,7 @@ const ProjectsPage = () => {
               {isAdmin && (
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                   <select
-                    className="flex-1 rounded-xl border border-stone-300 px-3 py-2 outline-none focus:border-amber-500"
+                    className="min-w-0 flex-1 rounded-xl border border-stone-300 px-3 py-2 outline-none focus:border-amber-500"
                     value={memberSelections[project._id] || ""}
                     onChange={(event) => setMemberSelections((current) => ({ ...current, [project._id]: event.target.value }))}
                   >
@@ -268,7 +268,7 @@ const ProjectsPage = () => {
                       </option>
                     ))}
                   </select>
-                  <button className="rounded-xl bg-amber-700 px-3 py-2 text-white" type="button" onClick={() => onAddMember(project._id)}>
+                  <button className="shrink-0 rounded-xl bg-amber-700 px-3 py-2 text-white" type="button" onClick={() => onAddMember(project._id)}>
                     Add
                   </button>
                 </div>
