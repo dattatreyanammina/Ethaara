@@ -20,7 +20,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Middleware
-app.use(cors({ origin: process.env.CLIENT_URL || "*" }));
+const corsOrigin = process.env.CLIENT_URL || "http://localhost:5173";
+app.use(cors({ 
+  origin: corsOrigin,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 app.use(morgan("dev"));
 
