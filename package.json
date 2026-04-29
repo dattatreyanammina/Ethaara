@@ -4,6 +4,7 @@
   "description": "A fast MVP for assignment/demo use with role-based project and task management.",
   "main": "index.js",
   "scripts": {
+    "start": "node server/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -4,7 +4,9 @@ import { User } from "../models/User.js";
 
 export const getDashboardSummary = async (req, res) => {
   try {
-    const projects = await Project.find({ members: req.user._id }).select("_id");
+    const projects = req.user.role === "admin"
+      ? await Project.find().select("_id").sort({ createdAt: -1 })
+      : await Project.find({ members: req.user._id }).select("_id").sort({ createdAt: -1 });
     const projectIds = projects.map((project) => project._id);
 
     const tasks = await Task.find({ projectId: { $in: projectIds } });

@@ -10,6 +10,10 @@ export const AuthProvider = ({ children }) => {
     return raw ? JSON.parse(raw) : null;
   });
 
+  // Ensure the api client has the token set synchronously on initialization
+  // to avoid a race where child components fetch before the effect runs.
+  setAuthToken(token);
+
   useEffect(() => {
     setAuthToken(token);
   }, [token]);
